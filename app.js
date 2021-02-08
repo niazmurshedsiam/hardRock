@@ -1,9 +1,9 @@
-const searchSong = ()=>{
+const searchSong = async()=>{
     const searchText = document.getElementById("searchField").value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displaySong(data.data))
+    const res = await fetch(url);
+    const data = await res.json();
+    displaySong(data.data);
 }
 
 const displaySong = songs =>{
